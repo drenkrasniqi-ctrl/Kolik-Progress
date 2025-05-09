@@ -10,7 +10,8 @@ import AccountSettings from './pages/AccountSettings';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { CartProvider } from './context/CartContext'; // ✅ Import Cart Context
+import ProductComparison from './pages/ProductComparison'; // ✅ New import
+import { CartProvider } from './context/CartContext';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/products" element={<ProductComparison />} /> {/* ✅ New route */}
           </Route>
         </Routes>
       </CartProvider>

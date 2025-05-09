@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import ListSidebar from './ListSidebar';
 
 const Navbar = ({
+  onLoginClick,
+  onRegisterClick,
+}: {
+  onLoginClick: () => void;
+  onRegisterClick: () => void;
+}) => {
+  const [showList, setShowList] = useState(false);
   onLoginClick,
   onRegisterClick,
 }: {
@@ -54,8 +63,18 @@ const Navbar = ({
           Registration
         </button>
       </div>
+    
+      <button
+        onClick={() => setShowList((prev) => !prev)}
+        className="ml-auto bg-white text-blue-600 font-semibold px-4 py-1.5 rounded-md hover:bg-gray-100 transition"
+      >
+        📝 List
+      </button>
+
     </nav>
   );
 };
 
 export default Navbar;
+
+{showList && <ListSidebar />}

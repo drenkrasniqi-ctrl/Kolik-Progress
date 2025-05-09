@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const categories = [
-  { name: "Dairy", image: "/public/images/diary.jpg" },
+  { name: "Dairy", image: "/images/diary.jpg" },
   { name: "Bakery", image: "/images/bakery.jpg" },
   { name: "Beverages", image: "/images/beverages.jpg" },
   { name: "Fruits", image: "/images/fruits.jpg" },
@@ -17,7 +17,7 @@ const Categories = () => {
 
   return (
     <div className="min-h-screen p-6">
-      <h1 className="text-3xl font-bold mb-6">Categories Page</h1>
+      <h1 className="text-3xl font-bold mb-6">📂 Categories Page</h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {categories.map((cat) => (

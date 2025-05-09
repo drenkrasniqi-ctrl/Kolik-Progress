@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaBars, FaShoppingCart } from 'react-icons/fa';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
+import CartSidebar from './CartSidebar';
 
 const Navbar = ({ onBurgerClick }: { onBurgerClick: () => void }) => {
   const { cart } = useCart();
@@ -10,7 +11,6 @@ const Navbar = ({ onBurgerClick }: { onBurgerClick: () => void }) => {
   return (
     <>
       <nav className="bg-white px-4 py-3 shadow-md flex items-center justify-between">
-        {/* Left: Burger + Logo */}
         <div className="flex items-center gap-3">
           <button onClick={onBurgerClick} className="text-2xl">
             <FaBars />
@@ -20,7 +20,6 @@ const Navbar = ({ onBurgerClick }: { onBurgerClick: () => void }) => {
           </Link>
         </div>
 
-        {/* Center: Search */}
         <div className="flex-1 max-w-xl mx-4 hidden md:block">
           <input
             type="text"
@@ -29,7 +28,6 @@ const Navbar = ({ onBurgerClick }: { onBurgerClick: () => void }) => {
           />
         </div>
 
-        {/* Right: Auth + Cart */}
         <div className="flex items-center gap-4 text-sm">
           <Link to="/login" className="hover:underline">Log in</Link>
           <Link
@@ -39,7 +37,6 @@ const Navbar = ({ onBurgerClick }: { onBurgerClick: () => void }) => {
             Register
           </Link>
 
-          {/* Cart icon with count badge */}
           <button
             className="text-xl relative"
             onClick={() => setShowCart((prev) => !prev)}
@@ -54,24 +51,7 @@ const Navbar = ({ onBurgerClick }: { onBurgerClick: () => void }) => {
         </div>
       </nav>
 
-      {/* Cart Dropdown */}
-      {showCart && (
-        <div className="absolute right-4 top-16 w-72 bg-white border rounded shadow-lg z-50 p-4">
-          <h2 className="text-lg font-semibold mb-2">Your Cart</h2>
-          {cart.length === 0 ? (
-            <p className="text-gray-500">Cart is empty.</p>
-          ) : (
-            <ul className="space-y-2">
-              {cart.map((item) => (
-                <li key={item.id} className="flex justify-between">
-                  <span>{item.name}</span>
-                  <span>x{item.quantity}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
+      {showCart && <CartSidebar />}
     </>
   );
 };
